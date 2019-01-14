@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+    triggers {
+        pollSCM('* * * * *')
+    }
+
+    stages {
+
+        stage('Build') {
+            steps {
+                sh 'make'
+                echo 'This is building...'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                def sum=1+2
+                sh 'sum'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                echo JOB_NAME
+                junit '**/target/*.xml'
+            }
+        }
+    }
+}
