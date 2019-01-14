@@ -8,20 +8,15 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'make'
                 echo 'This is building...'
+                sh 'make'
             }
         }
 
         stage('Test') {
             steps {  
-                script {
-                    def browsers = ['chrome', 'safari']
-                    for (int i = 0; i < browsers.size(); ++i) {
-                        echo "Testing the ${browsers[i]} browser."
-                    }
-                    sh 'sum'
-                }
+                pwd
+                echo 'hello'
             }
         }
 
